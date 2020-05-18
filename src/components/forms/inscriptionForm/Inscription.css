@@ -1,0 +1,23 @@
+@import'~antd/dist/antd.css';
+.inscription-page{
+    padding-top: 50px;
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    width: 50em;
+    border: 1px solid grey;
+    box-shadow: 10px 10px 5px 3px #8FBC8F;
+}
+.date{
+    text-align: justify;
+}
+.inlineInputs{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
