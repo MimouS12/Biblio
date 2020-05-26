@@ -1,0 +1,16 @@
+.adherent-details .header {
+    font-weight: bold;
+    font-size: 23px;
+    margin-bottom:20px;
+    text-align: center 
+}
+
+.adherent-details .title {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.adherent-details .value {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
