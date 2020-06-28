@@ -1,0 +1,782 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test tasks list should render an array of tasks list 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+        
+      <div
+        class="adherents-list"
+      >
+        <h1
+          class="Titre1"
+        >
+          Liste des livres 
+        </h1>
+        <div
+          class="search"
+        >
+          <input
+            name="search"
+            placeholder=" titre/nom auteur"
+            type="search"
+            value=""
+          />
+        </div>
+        <div>
+           
+          <table
+            class="entete-tab"
+          >
+            <tbody>
+              <tr>
+                <th>
+                  Libelle
+                </th>
+                <th />
+                <th />
+                <th />
+                <th />
+                <th />
+                <th />
+                <th />
+                <th>
+                  auteur
+                </th>
+                <th />
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <div>
+            <div
+              class="adherenttable"
+            >
+              <div
+                aria-label="libelle"
+                class="libelle"
+                data-testid="libelle"
+              >
+                Jamais sans ma fille
+              </div>
+              <div
+                class="auteur"
+                data-testid="auteur"
+              >
+                Betty Mahmoody
+              </div>
+              <div
+                class="ButtonSection"
+              >
+                <div>
+                  <button
+                    class="button"
+                    data-testid="Emprunter"
+                    style="background: Goldenrod;"
+                  >
+                    Emprunter
+                  </button>
+                </div>
+                <div>
+                  <a
+                    href="/memberPage/listelivres/2"
+                  >
+                     Détails
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              class="adherenttable"
+            >
+              <div
+                aria-label="libelle"
+                class="libelle"
+                data-testid="libelle"
+              >
+                Jane Eyre
+              </div>
+              <div
+                class="auteur"
+                data-testid="auteur"
+              >
+                Charlotte Brontë
+              </div>
+              <div
+                class="ButtonSection"
+              >
+                <div>
+                  <button
+                    class="button"
+                    data-testid="Emprunter"
+                    style="background: Goldenrod;"
+                  >
+                    Emprunter
+                  </button>
+                </div>
+                <div>
+                  <a
+                    href="/memberPage/listelivres/3"
+                  >
+                     Détails
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              class="adherenttable"
+            >
+              <div
+                aria-label="libelle"
+                class="libelle"
+                data-testid="libelle"
+              >
+                La cité de la joie
+              </div>
+              <div
+                class="auteur"
+                data-testid="auteur"
+              >
+                Dominique Lapierre
+              </div>
+              <div
+                class="ButtonSection"
+              >
+                <div>
+                  <button
+                    class="button"
+                    data-testid="Emprunter"
+                    style="background: Goldenrod;"
+                  >
+                    Emprunter
+                  </button>
+                </div>
+                <div>
+                  <a
+                    href="/memberPage/listelivres/4"
+                  >
+                     Détails
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              class="adherenttable"
+            >
+              <div
+                aria-label="libelle"
+                class="libelle"
+                data-testid="libelle"
+              >
+                Le meilleur des Mondes
+              </div>
+              <div
+                class="auteur"
+                data-testid="auteur"
+              >
+                Aldous Huxley
+              </div>
+              <div
+                class="ButtonSection"
+              >
+                <div>
+                  <button
+                    class="button"
+                    data-testid="Emprunter"
+                    style="background: Goldenrod;"
+                  >
+                    Emprunter
+                  </button>
+                </div>
+                <div>
+                  <a
+                    href="/memberPage/listelivres/5"
+                  >
+                     Détails
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              class="adherenttable"
+            >
+              <div
+                aria-label="libelle"
+                class="libelle"
+                data-testid="libelle"
+              >
+                L'étranger
+              </div>
+              <div
+                class="auteur"
+                data-testid="auteur"
+              >
+                Albert Camus
+              </div>
+              <div
+                class="ButtonSection"
+              >
+                <div>
+                  <button
+                    class="button"
+                    data-testid="Emprunter"
+                    style="background: Goldenrod;"
+                  >
+                    Emprunter
+                  </button>
+                </div>
+                <div>
+                  <a
+                    href="/memberPage/listelivres/6"
+                  >
+                     Détails
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              class="adherenttable"
+            >
+              <div
+                aria-label="libelle"
+                class="libelle"
+                data-testid="libelle"
+              >
+                Les malheurs de Sophie
+              </div>
+              <div
+                class="auteur"
+                data-testid="auteur"
+              >
+                Comtesse de Ségur
+              </div>
+              <div
+                class="ButtonSection"
+              >
+                <div>
+                  <button
+                    class="button"
+                    data-testid="Emprunter"
+                    style="background: Goldenrod;"
+                  >
+                    Emprunter
+                  </button>
+                </div>
+                <div>
+                  <a
+                    href="/memberPage/listelivres/7"
+                  >
+                     Détails
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              class="adherenttable"
+            >
+              <div
+                aria-label="libelle"
+                class="libelle"
+                data-testid="libelle"
+              >
+                Madame Bovary
+              </div>
+              <div
+                class="auteur"
+                data-testid="auteur"
+              >
+                Gustave Flaubert
+              </div>
+              <div
+                class="ButtonSection"
+              >
+                <div>
+                  <button
+                    class="button"
+                    data-testid="Emprunter"
+                    style="background: Goldenrod;"
+                  >
+                    Emprunter
+                  </button>
+                </div>
+                <div>
+                  <a
+                    href="/memberPage/listelivres/8"
+                  >
+                     Détails
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              class="adherenttable"
+            >
+              <div
+                aria-label="libelle"
+                class="libelle"
+                data-testid="libelle"
+              >
+                La Mère
+              </div>
+              <div
+                class="auteur"
+                data-testid="auteur"
+              >
+                Pearl Buck
+              </div>
+              <div
+                class="ButtonSection"
+              >
+                <div>
+                  <button
+                    class="button"
+                    data-testid="Emprunter"
+                    style="background: Goldenrod;"
+                  >
+                    Emprunter
+                  </button>
+                </div>
+                <div>
+                  <a
+                    href="/memberPage/listelivres/9"
+                  >
+                     Détails
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+      
+    <div
+      class="adherents-list"
+    >
+      <h1
+        class="Titre1"
+      >
+        Liste des livres 
+      </h1>
+      <div
+        class="search"
+      >
+        <input
+          name="search"
+          placeholder=" titre/nom auteur"
+          type="search"
+          value=""
+        />
+      </div>
+      <div>
+         
+        <table
+          class="entete-tab"
+        >
+          <tbody>
+            <tr>
+              <th>
+                Libelle
+              </th>
+              <th />
+              <th />
+              <th />
+              <th />
+              <th />
+              <th />
+              <th />
+              <th>
+                auteur
+              </th>
+              <th />
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <div>
+          <div
+            class="adherenttable"
+          >
+            <div
+              aria-label="libelle"
+              class="libelle"
+              data-testid="libelle"
+            >
+              Jamais sans ma fille
+            </div>
+            <div
+              class="auteur"
+              data-testid="auteur"
+            >
+              Betty Mahmoody
+            </div>
+            <div
+              class="ButtonSection"
+            >
+              <div>
+                <button
+                  class="button"
+                  data-testid="Emprunter"
+                  style="background: Goldenrod;"
+                >
+                  Emprunter
+                </button>
+              </div>
+              <div>
+                <a
+                  href="/memberPage/listelivres/2"
+                >
+                   Détails
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            class="adherenttable"
+          >
+            <div
+              aria-label="libelle"
+              class="libelle"
+              data-testid="libelle"
+            >
+              Jane Eyre
+            </div>
+            <div
+              class="auteur"
+              data-testid="auteur"
+            >
+              Charlotte Brontë
+            </div>
+            <div
+              class="ButtonSection"
+            >
+              <div>
+                <button
+                  class="button"
+                  data-testid="Emprunter"
+                  style="background: Goldenrod;"
+                >
+                  Emprunter
+                </button>
+              </div>
+              <div>
+                <a
+                  href="/memberPage/listelivres/3"
+                >
+                   Détails
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            class="adherenttable"
+          >
+            <div
+              aria-label="libelle"
+              class="libelle"
+              data-testid="libelle"
+            >
+              La cité de la joie
+            </div>
+            <div
+              class="auteur"
+              data-testid="auteur"
+            >
+              Dominique Lapierre
+            </div>
+            <div
+              class="ButtonSection"
+            >
+              <div>
+                <button
+                  class="button"
+                  data-testid="Emprunter"
+                  style="background: Goldenrod;"
+                >
+                  Emprunter
+                </button>
+              </div>
+              <div>
+                <a
+                  href="/memberPage/listelivres/4"
+                >
+                   Détails
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            class="adherenttable"
+          >
+            <div
+              aria-label="libelle"
+              class="libelle"
+              data-testid="libelle"
+            >
+              Le meilleur des Mondes
+            </div>
+            <div
+              class="auteur"
+              data-testid="auteur"
+            >
+              Aldous Huxley
+            </div>
+            <div
+              class="ButtonSection"
+            >
+              <div>
+                <button
+                  class="button"
+                  data-testid="Emprunter"
+                  style="background: Goldenrod;"
+                >
+                  Emprunter
+                </button>
+              </div>
+              <div>
+                <a
+                  href="/memberPage/listelivres/5"
+                >
+                   Détails
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            class="adherenttable"
+          >
+            <div
+              aria-label="libelle"
+              class="libelle"
+              data-testid="libelle"
+            >
+              L'étranger
+            </div>
+            <div
+              class="auteur"
+              data-testid="auteur"
+            >
+              Albert Camus
+            </div>
+            <div
+              class="ButtonSection"
+            >
+              <div>
+                <button
+                  class="button"
+                  data-testid="Emprunter"
+                  style="background: Goldenrod;"
+                >
+                  Emprunter
+                </button>
+              </div>
+              <div>
+                <a
+                  href="/memberPage/listelivres/6"
+                >
+                   Détails
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            class="adherenttable"
+          >
+            <div
+              aria-label="libelle"
+              class="libelle"
+              data-testid="libelle"
+            >
+              Les malheurs de Sophie
+            </div>
+            <div
+              class="auteur"
+              data-testid="auteur"
+            >
+              Comtesse de Ségur
+            </div>
+            <div
+              class="ButtonSection"
+            >
+              <div>
+                <button
+                  class="button"
+                  data-testid="Emprunter"
+                  style="background: Goldenrod;"
+                >
+                  Emprunter
+                </button>
+              </div>
+              <div>
+                <a
+                  href="/memberPage/listelivres/7"
+                >
+                   Détails
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            class="adherenttable"
+          >
+            <div
+              aria-label="libelle"
+              class="libelle"
+              data-testid="libelle"
+            >
+              Madame Bovary
+            </div>
+            <div
+              class="auteur"
+              data-testid="auteur"
+            >
+              Gustave Flaubert
+            </div>
+            <div
+              class="ButtonSection"
+            >
+              <div>
+                <button
+                  class="button"
+                  data-testid="Emprunter"
+                  style="background: Goldenrod;"
+                >
+                  Emprunter
+                </button>
+              </div>
+              <div>
+                <a
+                  href="/memberPage/listelivres/8"
+                >
+                   Détails
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            class="adherenttable"
+          >
+            <div
+              aria-label="libelle"
+              class="libelle"
+              data-testid="libelle"
+            >
+              La Mère
+            </div>
+            <div
+              class="auteur"
+              data-testid="auteur"
+            >
+              Pearl Buck
+            </div>
+            <div
+              class="ButtonSection"
+            >
+              <div>
+                <button
+                  class="button"
+                  data-testid="Emprunter"
+                  style="background: Goldenrod;"
+                >
+                  Emprunter
+                </button>
+              </div>
+              <div>
+                <a
+                  href="/memberPage/listelivres/9"
+                >
+                   Détails
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

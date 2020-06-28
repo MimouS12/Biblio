@@ -1,0 +1,38 @@
+.homepage{
+    background-image: url("../images/biblio2.jpg");
+    width: auto;
+    height: 250px;
+    /* border: 1px solid brown; */
+   
+}
+.descBiblio{
+    padding-left: 150px;
+    padding-right: 150px;
+}
+.footer{height:300px;
+    background:	lightsteelblue	;
+}
+.homedesc{ background-color: #DEB887;}
+.menu_haut {
+    height:100px;
+    position:relative; }
+    
+    
+    .img_gauche {
+    background-image: url("../images/img1.jpg") no-repeat;
+    width:30px;
+    position:absolute;
+    left:0;
+    top:0; }
+    
+    .img_centre {
+    background-image :url("../images/biblio2.jpg") repeat-x;
+    display:block;
+    margin:0; }
+    
+    .img_droite {
+    background-image:url("../images/img1.jpg") no-repeat;
+    width:30px;
+    position:absolute;
+    right:0;
+    top:0; }
