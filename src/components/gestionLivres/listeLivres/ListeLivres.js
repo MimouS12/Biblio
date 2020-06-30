@@ -2,25 +2,20 @@ import React, { useState, useEffect } from "react"
 // useCallback,
 import ListeActive from "./listeActive/ListeActive"
 import ListeArchive from "./listeArchive/ListeArchive"
+import {fetchbooksActive ,fetchBooks } from '../../../services/livres.service'
+
 import "./ListeLivres.css"
 
 
 
 
 function ListeLivres() {
-  /*  const [books, setbooks] = useState([])
-   const [searchValue, setSearchValue] = useState("") */
-  const[modeAdmin,setModeAdmin]=useState(false)
- /*  useEffect(() => {
-    const fetchData =  () => {
-      const result =  fetchbooks()
-      setbooks(result)
-    }
-    console.log("useEffect")
 
-    fetchData()
-  }, [])
- */
+  const[modeAdmin,setModeAdmin]=useState(false)
+  const [activeBooks,  setActiveBooks] = useState([])
+  const [searchValue, setSearchValue] = useState("")
+
+
   useEffect(()=>{
     let user = localStorage.getItem('user')
     if(user ==="admin"){
@@ -28,27 +23,37 @@ function ListeLivres() {
     }
 
   },[])
- 
+  useEffect(() => {
+    const fetchData =  () => {
+      const result = fetchbooksActive()
+      setActiveBooks(result)
+    }
+    //console.log("useEffect: fetch active books")
   
- 
-/*   
-   const addBook =  ( libelle,auteur)  => {
-   
-    setbooks(previousBooks => [
-      ...previousBooks,
-      { id: previousBooks.length + 1, libelle,auteur}
-    ])
-  }   */
-  /* const addTask = (title, duration) => {
-    setTasks(previousTasks => [
-      ...previousTasks,
-      { id: previousTasks.length + 1, title, duration: Number(duration) }
-    ])
-  }
-  const addBook =(EAN, libelle)=>{
-    setActiveBooks([...activeBooks, {EAN, libelle}])
-  }
-   */
+    fetchData()
+  }, [])
+  useEffect(() => {
+    let didCancel = false
+    const fetchData = async () => {
+        const result = await fetchBooks(searchValue)
+        console.log("result: ", didCancel)
+        if (!didCancel) {
+          setActiveBooks(result)
+        }
+
+      
+    }
+    fetchData()
+    return () => {
+      //console.log("cleanup: ", searchValue)
+      didCancel = true
+    }
+
+  }, [searchValue])
+  const deleteActiveBook= id => {
+    const newbooks  = activeBooks.filter( book =>  book.id !== id)
+    setActiveBooks(newbooks)}
+     
   
   
   return (
@@ -57,8 +62,17 @@ function ListeLivres() {
         <div className="homepage"></div>
         
         <div className="page" >
+        <div className="search">
+          <input
+            type="search"
+            name="search"
+            placeholder=" titre/nom auteur"
+            value={searchValue}
+            onChange={e => setSearchValue(e.target.value)}
+          />
+        </div>
 
-        <ListeActive /> 
+        <ListeActive booksActive={activeBooks} deleteTask={deleteActiveBook} /> 
         {modeAdmin &&(  
               <ListeArchive />              
         )}

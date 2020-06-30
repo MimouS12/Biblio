@@ -1,5 +1,5 @@
 
- const books = [
+ export const books = [
    {id :"1",
     //Code-barres EAN
     EAN:9782714411501,
@@ -86,6 +86,8 @@
     etat:"arch"
     }
   ] 
+
+
   // const getlibelle = (id) =>{
   //   for (let i = 0; i <books.length; i++) {
   //     if(books[i].id === id){
@@ -207,8 +209,8 @@
  export const fetchbooksArchive =  () => {
   return books.filter(book => book.etat==="arch")
 }
-export const fetchbooks = async searchValue => {
-  await delay(200)
+export const fetchbooks = () => {
+ // await delay(200)
    return books
   //return tasks.filter(task => task.title.includes(searchValue))
 }

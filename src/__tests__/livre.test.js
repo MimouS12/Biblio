@@ -12,7 +12,8 @@ describe("test add book", () => {
       auteur: "Colleen McCullough",
       edition:2010,
       nbExemplaires:21,
-      EAN:9782714411501
+      EAN:9782714411501,
+      etat:"actv"
   }
   test("should render a book data", () => {
     const  mockdeleteBook = jest.fn()

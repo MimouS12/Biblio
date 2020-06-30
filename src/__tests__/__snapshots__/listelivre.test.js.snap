@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`test tasks list should render an array of tasks list 1`] = `
+exports[`test tasks list snapshot : should render an array of tasks list 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
@@ -14,16 +14,6 @@ Object {
         >
           Liste des livres 
         </h1>
-        <div
-          class="search"
-        >
-          <input
-            name="search"
-            placeholder=" titre/nom auteur"
-            type="search"
-            value=""
-          />
-        </div>
         <div>
            
           <table
@@ -376,16 +366,6 @@ Object {
       >
         Liste des livres 
       </h1>
-      <div
-        class="search"
-      >
-        <input
-          name="search"
-          placeholder=" titre/nom auteur"
-          type="search"
-          value=""
-        />
-      </div>
       <div>
          
         <table

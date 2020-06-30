@@ -3,22 +3,24 @@ import {  render , fireEvent, act} from "@testing-library/react"
 import BookForm from "../components/gestionLivres/formBook/BookForm"
 //import './matchMedia.mock'; 
 import user from '@testing-library/user-event'
-
+import {
+  
+ addBook as mockAddbook,
+} from "../services/livres.service"
+jest.mock("../services/livres.service" )
   
 describe("test add book", () => { 
   
 
    test("should works without crashing", () => {
-    const mockAddbook = jest.fn()
-    const { debug } = render(<BookForm addBook ={mockAddbook}/>)
+    const { debug } = render(<BookForm />)
      //debug()
   }) 
 
 
-   test("should contains task name, duration and a button", () => {
-    const mockAddbook = jest.fn()
+   test("devrait contenir: EAN, Libelle, auteur ,edition et nombre d'exemplaires et buttons", () => {
     const { debug, getByLabelText, getByTestId, getByText } = render(
-      <BookForm addBook={mockAddbook} />
+      <BookForm  />
     )
     const input = getByLabelText(/EAN/i)
      //debug(input)
@@ -51,9 +53,8 @@ describe("test add book", () => {
 
   test("should fire events", async () => {
     const promise=Promise.resolve()
-    const mockAddbook = jest.fn(()=>promise)
     const { debug, getByLabelText, getByTestId } = render(
-      <BookForm addBook={mockAddbook} />
+      <BookForm />
     )
     const input = getByLabelText(/EAN/i)
 
@@ -121,17 +122,17 @@ describe("test add book", () => {
     //user.click(submitButton)
     await act(() => promise)
     
-    /*expect(mockAddbook).toHaveBeenCalled()
+    expect(mockAddbook).toHaveBeenCalled()
     expect(mockAddbook).toHaveBeenCalledTimes(1) 
-    */
+    
       
 
   })
 
    test("should display an error", () => {
-     const mockAddbook = jest.fn()
+
      const { debug, getByLabelText, getByTestId, queryByTestId, container } = render(
-       <BookForm addBook={mockAddbook} />
+       <BookForm />
      )
     
      const inputNombreExemplaires = getByLabelText(/NombreExemplaires/i)
@@ -147,14 +148,13 @@ describe("test add book", () => {
    })
 
     test("should not display an error", () => {
-      const mockAddbook = jest.fn()
       const {
         debug,
         getByLabelText,
         getByTestId,
         queryByTestId,
         rerender,
-      } = render(<BookForm  addBook={mockAddbook} />)
+      } = render(<BookForm  />)
 
       const inputNombreExemplaires = getByLabelText(/NombreExemplaires/i)
       let NombreExemplairesValue = "30"
@@ -165,7 +165,7 @@ describe("test add book", () => {
 
 
        NombreExemplairesValue = "30"
-      rerender(<BookForm addBook={mockAddbook} maxExemplaireValue={20} />)
+      rerender(<BookForm  maxExemplaireValue={20} />)
       // user.type(inputNombreExemplaires, NombreExemplairesValue)
        fireEvent.change(inputNombreExemplaires, { target: { value:  NombreExemplairesValue} })
       // debug()

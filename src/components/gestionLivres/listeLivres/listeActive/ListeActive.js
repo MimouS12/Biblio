@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react"
 // useCallback,
-import {fetchbooksActive ,fetchBooks } from '../../../../services/livres.service'
 import Livre from "../../livre/Livre"
 import "./listeActive.css"
 import BookForm from "../../formBook/BookForm"
 
-function ListeActive() {
-  const [searchValue, setSearchValue] = useState("")
-  const [activeBooks,  setActiveBooks] = useState([])
+function ListeActive({booksActive,deleteTask}) {
+
+  //const [activeBooks,  setActiveBooks] = useState([])
   const [isVisible, setIsVisible] = useState(false)
   const[modeAdmin,setModeAdmin]=useState(false)
  
@@ -18,40 +17,23 @@ function ListeActive() {
         setModeAdmin(true)
     }}, [])
  
-useEffect(() => {
-  const fetchData =  () => {
-    //setLoading(true)
-    const result = fetchbooksActive()
-    setActiveBooks(result)
-    //setLoading(false)
-  }
-  console.log("useEffect")
+// useEffect(() => {
+//   const fetchData =  () => {
+//     //setLoading(true)
+//     const result = fetchbooksActive()
+//     setActiveBooks(result)
+//     //setLoading(false)
+//   }
+//   console.log("useEffect")
 
-  fetchData()
-}, [])
+//   fetchData()
+// }, [])
 
-   useEffect(() => {
-    let didCancel = false
-    const fetchData = async () => {
-        const result = await fetchBooks(searchValue)
-        //console.log("result: ", didCancel)
-        if (!didCancel) {
-          setActiveBooks(result)
-        }
 
-      
-    }
-    fetchData()
-    return () => {
-      console.log("cleanup: ", searchValue)
-      didCancel = true
-    }
 
-  }, [searchValue])
-
-  const deleteBook= id => {
-    const newbooks  = activeBooks.filter( book =>  book.id !== id)
-    setActiveBooks(newbooks)}
+  // const deleteActiveBook= id => {
+  //   const newbooks  = activeBooks.filter( book =>  book.id !== id)
+  //   setActiveBooks(newbooks)}
      
 
  
@@ -70,22 +52,12 @@ useEffect(() => {
             <div>
           <div>  <button className="Toggle"onClick={toggleVisibility}>Ajouter livre</button>
             </div> 
-           <div>{isVisible && ( <BookForm  />)} </div>
+           <div>{isVisible && ( <BookForm />)} </div>
            </div>
         )} 
       <h1 className="Titre1">Liste des livres </h1>
 
-      <div className="search">
-          <input
-            type="search"
-            name="search"
-            placeholder=" titre/nom auteur"
-            value={searchValue}
-            onChange={e => setSearchValue(e.target.value)}
-          />
-        </div>
-   
-         {activeBooks.length!==0 ?(
+         {booksActive.length !==0 ?(
                 <> 
       <div> <table className="entete-tab">
      <tbody>
@@ -104,7 +76,7 @@ useEffect(() => {
     <div>
  
   
-      {activeBooks.map((book) => {
+      {booksActive.map((book) => {
 
          return <Livre
                     key={book.id}
@@ -115,7 +87,7 @@ useEffect(() => {
                      edition={book.edition}
                      nbExemplaires ={book.nbExemplaires}
                      liste="active"
-                    deleteBook={deleteBook}
+                    deleteBook={deleteTask}
                    
                 />
       })}

@@ -35,7 +35,8 @@ export default function Livre({ id, libelle, auteur ,EAN,edition ,nbExemplaires,
         //car le membre est enregistrer sous forme de objet donc il faut faire json.parse pour pouvoir acceder aux champs
         var member = JSON.parse(user)
         var emprunts = JSON.parse(localStorage.getItem('emprunts'))
-        //emprunts could be null tha make error while connecting 
+
+        //emprunts could be null that make error while connecting 
         if(emprunts){
           var  empEnCours=emprunts.find(emprunt =>emprunt.idLivre===id && emprunt.etat==="encours" &&emprunt.idUser===member["id"])
           if(empEnCours){
@@ -58,6 +59,7 @@ export default function Livre({ id, libelle, auteur ,EAN,edition ,nbExemplaires,
   const Emprunter =()=>{
     if(nbExemplaires > 0){
       let userEm = JSON.parse(localStorage.getItem('user'))
+
       var emprunts = JSON.parse(localStorage.getItem("emprunts") || "[]");
        //console.log("length "+emprunts.length)
         var emprunt = {
@@ -73,8 +75,6 @@ export default function Livre({ id, libelle, auteur ,EAN,edition ,nbExemplaires,
 
           // si cette date est vide lezem nzidou 3la dateEmp 15 jours w nchufouha tji b date lyoum wala 
           //hatta akther mn date lyoum yaani nombre de jours ynajjm ykoun akther wala hatta f chHar eli ba3ed
-         
-
           dateRetour:""
          };
 
@@ -83,6 +83,7 @@ export default function Livre({ id, libelle, auteur ,EAN,edition ,nbExemplaires,
         sameUserEmp = emprunts.filter(item => item["idUser"]=== userEm["id"]&& item["etat"]!=="retourné");
         // console.log("lengttttth :::"+sameUserEmp.length)
         // console.log("user emp "+Object.values(sameUserEmp[0]))
+        
          if(sameUserEmp.length < 3){
             // nbExemplaires=nbExemplaires--
              setnbExemplaires(id,nbExemplaires-1)
@@ -142,27 +143,6 @@ export default function Livre({ id, libelle, auteur ,EAN,edition ,nbExemplaires,
     {!updateMode ? (
         
         <>
-         
-   
-     
-     {/* <table >
-       <tbody>
-     <tr>
-      <td>{libelle}</td>
-       <td></td>
-       <td></td>
-     
-       <td></td>
-       <td></td>
-       <td></td>
-       <td></td>
-       <td></td>
-       <td></td>
-   </td>     
-        </tr>
-        </tbody> 
-   </table>
-       <td>{auteur}</td> */}
        
         <div className="libelle" aria-label='libelle' data-testid='libelle'>
           {libelle} 
@@ -180,14 +160,16 @@ export default function Livre({ id, libelle, auteur ,EAN,edition ,nbExemplaires,
              <>
                   <div>   
               
-              <button data-testid='updateBook' className="button" style={{background:"limegreen"}}onClick={()=>setUpdateMode(true)}>
+              <button data-testid='updateBook' className="button" style={{background:"limegreen"}} onClick={()=>setUpdateMode(true)}>
                  Modifier
                </button>
-               </div>
-               
-                     <button data-testid ="deleteBook" className="button" style={{background:"Gold"}}onClick={() => deleteBook(id)}>
+               <button data-testid="deleteBook" className="button" style={{background:"Gold"}} onClick={() => deleteBook(id)}>
                        Supprimer
                       </button> 
+             
+               </div>
+               
+
                      
                       <div> 
 
@@ -210,7 +192,7 @@ export default function Livre({ id, libelle, auteur ,EAN,edition ,nbExemplaires,
         {modeMember &&(
           
          <>
-             
+
              {bookBorrowed &&(
               <div>
                      <button data-testid ="Retourner"className="button" style={{background:"yellow"}} onClick={Retourner}>

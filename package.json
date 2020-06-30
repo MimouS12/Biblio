@@ -9,8 +9,8 @@
   "private": true,
   "dependencies": {
     "@ant-design/pro-layout": "^5.0.17",
-    "@testing-library/jest-dom": "^5.10.1",
-    "@testing-library/user-event": "^12.0.9",
+    "@testing-library/jest-dom": "^5.11.0",
+    "@testing-library/user-event": "^12.0.11",
     "antd": "^4.2.4",
     "axios": "^0.19.2",
     "cypress": "^4.9.0",
