@@ -11,7 +11,7 @@ import { Router } from "react-router-dom"
 import { createMemoryHistory } from "history"
 import Livre from "../components/gestionLivres/livre/Livre"
 import ListeLivres from "../components/gestionLivres/listeLivres/ListeLivres"
-import { ApolloMockedProvider } from "./test-utils/providers";
+
 
 import {
     updateBook as mockupdateBook,
@@ -26,45 +26,59 @@ jest.mock("../services/livres.service" )
 describe("test todo app", () => {
   beforeEach(() => {
     jest.clearAllMocks()
+  //   var store = {};
+
+  // jest.spyOn(localStorage, 'getItem').andCallFake(function (key) {
+  //   return store[key];
+  // });
+  // jest.spyOn(localStorage, 'setItem').andCallFake(function (key, value) {
+  //   return store[key] = value + '';
+  // });
+  // jest.spyOn(localStorage, 'clear').andCallFake(function () {
+  //     store = {};
+  // });
   })
+
   
-  // test("test d'integration de liste livres avec mocking", async () => {
-  //   const mockdeleteBook = jest.fn()
-  //   const mockBooksWithOneBook = [
-  //     {id :"2",
-  //     EAN:9782266308472,
-  //     libelle:"Jamais sans ma fille", 
-  //     auteur:"Betty Mahmoody",
-  //     edition:2003,
-  //     nbExemplaires:1,
-  //     etat:"actv"
-  //     },
-  //     ]
+  test("test d'integration de liste livres avec mocking", async () => {
+    const mockdeleteBook = jest.fn()
+    const mockBooksWithOneBook = [
+      {id :"2",
+      EAN:9782266308472,
+      libelle:"Jamais sans ma fille", 
+      auteur:"Betty Mahmoody",
+      edition:2003,
+      nbExemplaires:1,
+      etat:"actv"
+      },
+      ]
 
-  //     mockfetchbooksActive.mockResolvedValue(mockBooksWithOneBook)
-  //   const promise = Promise.resolve({
-  //     success: true,
-  //   })
-  //  const history = createMemoryHistory({ initialEntries: ["/"] })
+      mockfetchbooksActive.mockResolvedValue(mockBooksWithOneBook)
+    const promise = Promise.resolve({
+      success: true,
+    })
+   const history = createMemoryHistory({ initialEntries: ["/"] })
 
-  //   const { getByTestId, debug, container, findByTestId, getByText } = render(
-  //     <Router history={history}>
-  //       <ListeLivres/> 
-  //     </Router>
-  //   )
-  //   setTimeout (()=> {
-  //     expect(mockfetchbooksActive).toBeCalledTimes(1)
-  //     done();
-  //   })
-  //    const libelle =  getByTestId ("libelle")
+    const { getByTestId, debug, container, findByTestId, getByText } = render(
+      <Router history={history}>
+        <ListeLivres/> 
+      </Router>
+    )
+    setTimeout (()=> {
+      expect(mockfetchbooksActive).toBeCalledTimes(1)
+      done();
+    })
+     const libelle =  getByTestId ("libelle")
 
-  //    expect(libelle).toHaveTextContent("Jamais sans ma fille")
+     expect(libelle).toHaveTextContent("Jamais sans ma fille")
 
-  //    await act(() => promise)
-  // })
+     await act(() => promise)
+  })
 
 test("test the integration of Booklist and Book",() => {
 const mockdeleteBook = jest.fn()
+localStorage.setItem("user","admin")
+//console.log("aaaaaaaaaaaa "+ localStorage.getItem("user"))
 const mockBooksWithOneBooks = [
   {id :"2",
   EAN:9782266308472,
@@ -93,10 +107,7 @@ expect(mockdeleteBook).toHaveBeenCalled()
 //expect(mockdeleteBook).toHaveBeenCalledTimes(1)
 //await act(() => promise)
 })
-test("integration of  BookForm et Booklist",() => {
 
-
-  })
 
 afterEach(cleanup);
 

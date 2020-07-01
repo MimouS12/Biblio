@@ -86,6 +86,11 @@ const adherents = [
     //await delay(200)
     return adherents.find(adherent => adherent.id===adherentId)
   }
+  
+  //lezmha ettiiiiir 
+
+
+
   const setetat = (id,etat) =>{
     for (let i = 0; i <adherents.length; i++) {
       if(adherents[i].id === id){

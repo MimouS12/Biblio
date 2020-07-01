@@ -130,64 +130,72 @@
   //     }
   //   }
   // }
-  const setlibelle = (id,libelle) =>{
-    for (let i = 0; i < books.length; i++) {
-      if(books[i].id === id){
-        books[i].libelle =libelle
-      }
-    }
-  }
-  const setEAN = (id,EAN) =>{
-    for (let i = 0; i <books.length; i++) {
-      if(books[i].id === id){
-        books[i].EAN =EAN
-      }
-    }
-  }
-  const setauteur = (id,auteur) =>{
-    for (let i = 0; i <books.length; i++) {
-      if(books[i].id === id){
-        books[i].auteur =auteur
-      }
-    }
-  }
-  const setedition = (id,edition) =>{
-    for (let i = 0; i <books.length; i++) {
-      if(books[i].id === id){
-       books[i].edition =edition
-      }
-    }
-  }
+  // const setlibelle = (id,libelle) =>{
+  //   for (let i = 0; i < books.length; i++) {
+  //     if(books[i].id === id){
+  //       books[i].libelle =libelle
+  //     }
+  //   }
+  // }
+  // const setEAN = (id,EAN) =>{
+  //   for (let i = 0; i <books.length; i++) {
+  //     if(books[i].id === id){
+  //       books[i].EAN =EAN
+  //     }
+  //   }
+  // }
+  // const setauteur = (id,auteur) =>{
+  //   for (let i = 0; i <books.length; i++) {
+  //     if(books[i].id === id){
+  //       books[i].auteur =auteur
+  //     }
+  //   }
+  // }
+  // const setedition = (id,edition) =>{
+  //   for (let i = 0; i <books.length; i++) {
+  //     if(books[i].id === id){
+  //      books[i].edition =edition
+  //     }
+  //   }
+  // }
  export const setnbExemplaires = (id,nbExemplaires) =>{
-    for (let i = 0; i <books.length; i++) {
-      if(books[i].id === id){
-       books[i].nbExemplaires=nbExemplaires
-      }
+  books.forEach((book) => {
+    if (book.id=== id) {
+     book.nbExemplaires=nbExemplaires
     }
+  }) 
   }
-  const setetat = (id,etat) =>{
-    for (let i = 0; i <books.length; i++) {
-      if(books[i].id === id){
-       books[i].etat =etat
-      }
-    }
-  }
+
   export const addBook = function (EAN, libelle,auteur,edition,nbExemplaires) {
     books.push({ id: (books.length + 1).toString(), EAN : Number(EAN), libelle,auteur,edition : Number(edition),nbExemplaires: Number(nbExemplaires),etat:"actv" });
     console.log('book added successfully !!');
     
    }
   export const updateBook = function (id,EAN, libelle,auteur,edition,nbExemplaires) {
-  setEAN(id,EAN)
-  setlibelle(id,libelle)
-  setauteur(id,auteur)
-  setedition(id,edition)
-  setnbExemplaires(id,nbExemplaires)
-  console.log('book is Updated !!!');
+  // setEAN(id,EAN)
+  // setlibelle(id,libelle)
+  // setauteur(id,auteur)
+  // setedition(id,edition)
+  // setnbExemplaires(id,nbExemplaires)
+  books.forEach((book) => {
+    if (book.id=== id) {
+     book.EAN=EAN
+     book.libelle=libelle
+     book.auteur=auteur
+     book.edition=edition
+     book.nbExemplaires=nbExemplaires
+    }
+  
+  })
+  // books.map(book => book.id ===id ? ({id,EAN, libelle,auteur,edition,nbExemplaires,"actv"}):book)
     }
   export const archiveBook = function (id) {
-  setetat(id,"arch")
-  console.log('book is Archived !!!');
+    books.forEach((book) => {
+      if (book.id=== id) {
+       book.etat="arch"
+      }
+    })
+    console.log('book is Archived !!!')
     }
 
   function delay(ms) {
