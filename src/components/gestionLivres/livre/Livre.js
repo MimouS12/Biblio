@@ -39,7 +39,7 @@ export default function Livre({ id, libelle, auteur ,EAN,edition ,nbExemplaires,
 
         //emprunts could be null that make error while connecting 
         if(emprunts){
-          var  empEnCours=emprunts.find(emprunt =>emprunt.idLivre===id && emprunt.etat==="encours" &&emprunt.idUser===member["id"])
+          var  empEnCours=emprunts.find(emprunt =>emprunt.idLivre===id && (emprunt.etat==="encours" || emprunt.etat==="EnCoursRetard") && emprunt.idUser===member["id"])
           if(empEnCours){
             setBookBorrowed(true)    
           }
@@ -59,7 +59,6 @@ export default function Livre({ id, libelle, auteur ,EAN,edition ,nbExemplaires,
   }
   const Emprunterlivre =()=>{
    var resltEmprunter= Emprunter(id ,libelle,nbExemplaires)
-
    if(resltEmprunter===1){
       setnbExemplaires(id,nbExemplaires-1)
       setBookBorrowed(true)
@@ -121,7 +120,7 @@ export default function Livre({ id, libelle, auteur ,EAN,edition ,nbExemplaires,
 
            {liste ==="active" &&(
                                     
-                                     <button className="button" style={{background:"orange"}} onClick={Archiver}>
+                                     <button data-testid="archiverBook" className="button" style={{background:"orange"}} onClick={Archiver}>
                                           Archiver
                                      </button>
                                 

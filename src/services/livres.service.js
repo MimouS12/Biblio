@@ -159,34 +159,65 @@
   //   }
   // }
  export const setnbExemplaires = (id,nbExemplaires) =>{
-  books.forEach((book) => {
-    if (book.id=== id) {
-     book.nbExemplaires=nbExemplaires
+
+  if (typeof (nbExemplaires) === "number") {
+    if (nbExemplaires > 0) {
+      books.forEach((book) => {
+        if (book.id=== id) {
+          book.nbExemplaires=nbExemplaires
+         }
+      }) 
+
+    } else {
+        throw new Error('le nombre d exemplaire est negatif !');
     }
-  }) 
+} else {
+    throw new Error('le type est different de number !');
+
+}
+
   }
 
   export const addBook = function (EAN, libelle,auteur,edition,nbExemplaires) {
+
+
+    if (typeof (EAN) === "number" && typeof (edition) === "number" && typeof (nbExemplaires) === "number"  ) {
+      if (nbExemplaires > 0 &&edition>0&&EAN>0) {
+        
     books.push({ id: (books.length + 1).toString(), EAN : Number(EAN), libelle,auteur,edition : Number(edition),nbExemplaires: Number(nbExemplaires),etat:"actv" });
     console.log('book added successfully !!');
+      }   else {
+        throw new Error("le nombre est negatif !");
+    }
+  } else {
+      throw new Error('le type est different de number !');
+  
+  }
+
     
    }
   export const updateBook = function (id,EAN, libelle,auteur,edition,nbExemplaires) {
-  // setEAN(id,EAN)
-  // setlibelle(id,libelle)
-  // setauteur(id,auteur)
-  // setedition(id,edition)
-  // setnbExemplaires(id,nbExemplaires)
-  books.forEach((book) => {
-    if (book.id=== id) {
-     book.EAN=EAN
-     book.libelle=libelle
-     book.auteur=auteur
-     book.edition=edition
-     book.nbExemplaires=nbExemplaires
+    if (typeof (EAN) === "number" && typeof (edition) === "number" && typeof (nbExemplaires) === "number"  ) {
+      if (nbExemplaires > 0 &&edition>0&&EAN>0) {
+        
+        books.forEach((book) => {
+          if (book.id=== id) {
+            book.EAN=EAN
+            book.libelle=libelle
+            book.auteur=auteur
+            book.edition=edition
+            book.nbExemplaires=nbExemplaires
+        }
+      
+      })
+      }   else {
+        throw new Error("le nombre est negatif !");
     }
+  } else {
+      throw new Error('le type est different de number !');
   
-  })
+  }
+
   // books.map(book => book.id ===id ? ({id,EAN, libelle,auteur,edition,nbExemplaires,"actv"}):book)
     }
   export const archiveBook = function (id) {
@@ -198,16 +229,16 @@
     console.log('book is Archived !!!')
     }
 
-  function delay(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms))
-  }  
-  export const fetchBookById=async (livreId)=>{
-    await delay(1000)
+  // function delay(ms) {
+  //   return new Promise(resolve => setTimeout(resolve, ms))
+  // }  
+  export const fetchBookById= (livreId)=>{
+    //await delay(1000)
     return books.find(book => book.id===livreId)
   }
 
-  export const fetchBooks = async searchValue => {
-    await delay(3000)
+  export const fetchBooks =  searchValue => {
+    //await delay(3000)
     // recherche book par libelle et par nom d'auteur
     return books.filter(book =>book.etat==="actv" &&(book.libelle.includes(searchValue)|| book.auteur.includes(searchValue)))
   }
@@ -218,7 +249,6 @@
   return books.filter(book => book.etat==="arch")
 }
 export const fetchbooks = () => {
- // await delay(200)
    return books
   //return tasks.filter(task => task.title.includes(searchValue))
 }

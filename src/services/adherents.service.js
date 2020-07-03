@@ -51,33 +51,22 @@ const adherents = [
     }
   ]
 
-  export const addMember = function (cin,nom,prenom, date,email) {
-    adherents.push({ id: (adherents.length + 1).toString(),cin, nom,prenom,date,email,etat:"active"});
-    console.log('member added successfully !!');
-   }
-  //exemple ta3 s'authentifier ylawj 3la email w cin tda5elhom fl liste elli aandna 
-  //3ayetlha fl login 
+  export const fetchMemberByemailCIN=(email , cin)=>{
+    return adherents.find(ad => ad.email===email && ad.cin===cin)
   
-  export const fetchMemberByemailCIN=async(email , cin)=>{
-      return adherents.find(ad => ad.email===email && ad.cin===cin)
-    
-  }
-  function delay(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms))
-  }
+}
+
+  // function delay(ms) {
+  //   return new Promise(resolve => setTimeout(resolve, ms))
+  // }
   export const fetchadherentsActive =  () => {
      return adherents.filter(adherent => adherent.etat==="active")
   }
   export const fetchadherentsBanni =  () => {
     return adherents.filter(adherent => adherent.etat==="banni")
  }
-  export const fetchadherent = async searchValue => {
-    await delay(200)
-     return adherents
-    //return tasks.filter(task => task.title.includes(searchValue))
-  }
-  export const fetchadherents = async searchValue => {
-    await delay(3000)
+  export const fetchadherents =  searchValue => {
+    //await delay(3000)
     // recherche book par libelle et par nom d'auteur
     return adherents.filter(adherent =>adherent.etat==="active" &&(adherent.nom.includes(searchValue)|| adherent.prenom.includes(searchValue)))
   }
@@ -87,52 +76,43 @@ const adherents = [
     return adherents.find(adherent => adherent.id===adherentId)
   }
   
-  //lezmha ettiiiiir 
 
-
-
-  const setetat = (id,etat) =>{
-    for (let i = 0; i <adherents.length; i++) {
-      if(adherents[i].id === id){
-      adherents[i].etat =etat
-      }
-    }
-  }
   export const bannirAdherent = function (id) {
-    setetat(id,"banni")
+    adherents.forEach((adh) => {
+      if (adh.id=== id) {
+       adh.etat="banni"
+      }
+    })
     console.log('Adherent is banni !!!');
       } 
       export const activerAdherent = function (id) {
-        setetat(id,"active")
+        adherents.forEach((adh) => {
+          if (adh.id=== id) {
+           adh.etat="active"
+          }
+        })
         console.log('Adherent is active !!!');
           } 
         
       
-          const setcin = (id,cin) =>{
-            for (let i = 0; i < adherents.length; i++) {
-              if(adherents[i].id === id){
-                adherents[i].cin =cin
-              }
-            }
-          }
-          const setnom = (id,nom ) =>{
-            for (let i = 0; i <adherents.length; i++) {
-              if(adherents[i].id === id){
-                adherents[i].nom  =nom 
-              }
-            }
-          }
-          const setprenom = (id,prenom) =>{
-            for (let i = 0; i <adherents.length; i++) {
-              if(adherents[i].id === id){
-                adherents[i].prenom =prenom
-              }
-            }
-          }
-      
-   export const updateAdherent = function (id,cin,nom,prenom) {
-    setcin(id,cin)
-    setnom(id,nom)
-    setprenom (id,prenom)
+   export const updateAdherent = function (id,cin,nom,prenom,dateNaissance,email) {
+    adherents.forEach((adh) => {
+      if (adh.id=== id) {
+        adh.cin=cin
+        adh.nom=nom
+        adh.prenom=prenom
+        adh.dateNaissance=dateNaissance
+        adh.email=email
+      }
+    })
+
   console.log('member is Updated !!!');
+
     }
+    export const addMember = function (cin,nom,prenom, dateNaissance,email) {
+      adherents.push({ id: (adherents.length + 1).toString(),cin, nom,prenom,dateNaissance,email,etat:"active"});
+      console.log('member added successfully !!');
+     }
+     export const fetchadherent =  () => {
+        return adherents
+     }

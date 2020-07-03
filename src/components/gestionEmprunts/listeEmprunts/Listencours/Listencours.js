@@ -1,23 +1,23 @@
 import React from "react"
 import Emprunt from "../../Emprunts/Emprunts"
+import {fetchListeEnCours} from "../../../../services/emprunts.service"
 import { Empty } from 'antd';
 
 import "./listeencours.css"
 
 function Listencours () {
 
-  let emprunts = JSON.parse(localStorage.getItem('emprunts'))
-
-  var  empEncours=emprunts.filter(emprunt => emprunt.etat==="encours")
+  var  empEncours=fetchListeEnCours()
 
 
   return (
     
     <div className="adherents-list">
        <h1 className="titre3">Liste des emprunts en cours</h1>
+       
       {empEncours.length!==0 ?(
                 <>
-                      <div> <table className="entete-tab">
+      <div> <table className="entete-tab">
         <tbody>
       <tr>
         <th>Libellé  </th>

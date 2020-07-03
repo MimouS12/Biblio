@@ -6,16 +6,14 @@ import React from "react"
 //import adherentPage from "./adherentPage/adherentPage"
 import Emprunt from "../../Emprunts/Emprunts"
 import { Empty } from 'antd';
+import {fetchListeRetourne} from "../../../../services/emprunts.service"
 
 import "./listeretourne.css"
 
 
 function Listeretournes() {
 
-  let emprunts = JSON.parse(localStorage.getItem('emprunts'))
-  
-
-  var  empretr=emprunts.filter(emprunt => emprunt.etat==="retourné")
+  var  empretr=fetchListeRetourne()
  
   return (
     

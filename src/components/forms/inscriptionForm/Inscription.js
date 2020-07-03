@@ -7,6 +7,7 @@ import {
 } from 'antd';
 
 import { Alert } from 'antd';
+import{DemanderInscription}from "../../../services/demandes.service"
 import "./Inscription.css";
 import FormItem from "antd/lib/form/FormItem";
 
@@ -21,29 +22,15 @@ function Inscription() {
 
   const onFinish = fieldsValue  => {
     const values = {
-      ...fieldsValue,
-      'date-picker': fieldsValue['date-picker'].format('YYYY-MM-DD'),
+    nom :fieldsValue["nom"],
+    prenom:fieldsValue["prenom"],
+    email : fieldsValue["email"],
+    cin :fieldsValue["cin"],
+    'date-picker': fieldsValue['date-picker'].format('YYYY-MM-DD'),
     };   
     setinscrit(true)
     console.log('Received values of form: ', values );
-
-    // el exemple elli jebt mennu bech les demandes yetsajlou fi tableau fl local storage 
-    //https://jsfiddle.net/436xupte/
-
-    var demandes = JSON.parse(localStorage.getItem("demandes") || "[]");
-      // Modifying
-      var demande = {
-        id: demandes.length ,
-        nom:values["nom"],
-        prenom:values["prenom"],
-        email : values["email"],
-        cin :values["cin"],
-        date:values["date-picker"]
-       };
-       demandes.push(demande);
-       console.log("Added demande #" + demande.id);
-         // Saving
-          localStorage.setItem("demandes", JSON.stringify(demandes));
+    DemanderInscription(values)
         
   };
 
@@ -127,7 +114,7 @@ function Inscription() {
        <Input maxLength="8"/>
 
      </FormItem>
-     <Form.Item name="date-picker" label="Date de naissance :" allowClear >
+     <Form.Item name="date-picker" label="Date de naissance :"  >
       <DatePicker />
      </Form.Item>  
      </div>

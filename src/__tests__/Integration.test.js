@@ -40,40 +40,40 @@ describe("test todo app", () => {
   })
 
   
-  test("test d'integration de liste livres avec mocking", async () => {
-    const mockdeleteBook = jest.fn()
-    const mockBooksWithOneBook = [
-      {id :"2",
-      EAN:9782266308472,
-      libelle:"Jamais sans ma fille", 
-      auteur:"Betty Mahmoody",
-      edition:2003,
-      nbExemplaires:1,
-      etat:"actv"
-      },
-      ]
+  // test("test d'integration de liste livres avec mocking", async () => {
+  //   //const mockdeleteBook = jest.fn()
+  //   const mockBooksWithOneBook = [
+  //     {id :"2",
+  //     EAN:9782266308472,
+  //     libelle:"Jamais sans ma fille", 
+  //     auteur:"Betty Mahmoody",
+  //     edition:2003,
+  //     nbExemplaires:1,
+  //     etat:"actv"
+  //     },
+  //     ]
 
-      mockfetchbooksActive.mockResolvedValue(mockBooksWithOneBook)
-    const promise = Promise.resolve({
-      success: true,
-    })
-   const history = createMemoryHistory({ initialEntries: ["/"] })
+  //     mockfetchbooksActive.mockResolvedValue(mockBooksWithOneBook)
+  //   const promise = Promise.resolve({
+  //     success: true,
+  //   })
+  //  const history = createMemoryHistory({ initialEntries: ["/"] })
 
-    const { getByTestId, debug, container, findByTestId, getByText } = render(
-      <Router history={history}>
-        <ListeLivres/> 
-      </Router>
-    )
-    setTimeout (()=> {
-      expect(mockfetchbooksActive).toBeCalledTimes(1)
-      done();
-    })
-     const libelle =  getByTestId ("libelle")
+  //   const { getByTestId, debug, container, findByTestId, getByText } = render(
+  //     <Router history={history}>
+  //       <ListeLivres/> 
+  //     </Router>
+  //   )
+  //   setTimeout (()=> {
+  //     expect(mockfetchbooksActive).toBeCalledTimes(1)
+  //     done();
+  //   })
+  //    const libelle =  getByTestId ("libelle")
 
-     expect(libelle).toHaveTextContent("Jamais sans ma fille")
+  //    expect(libelle).toHaveTextContent("Jamais sans ma fille")
 
-     await act(() => promise)
-  })
+  //    await act(() => promise)
+  // })
 
 test("test the integration of Booklist and Book",() => {
 const mockdeleteBook = jest.fn()
