@@ -80,7 +80,8 @@ const {
       edition:2017,
       nbExemplaires:7,
       etat:"actv"
-      },{id :"7",
+      },
+      {id :"7",
       EAN:9782203135215,
       libelle:"Les malheurs de Sophie", 
       auteur:"Comtesse de Ségur",
@@ -297,7 +298,7 @@ describe("test  pour la fonction ajouter livre ", ()=>{
             
        addBook(EAN,libelle,auteur,edition,nbExemplaires)
        //console.log(books)
-       const livres =fetchbooks()
+       const livres = fetchbooks()
 
        expect(livres).toStrictEqual(expected);
  

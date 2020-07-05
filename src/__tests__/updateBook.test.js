@@ -15,6 +15,7 @@ const {
       NewnbExemplaires=25;
       //id,EAN, libelle,auteur,edition,nbExemplaires
       updateBook(id,NewEAN,Newlibelle,Newauteur,Newedition,NewnbExemplaires)
+      
       const expected=[
         {id :"1",
          EAN:9782714411501,

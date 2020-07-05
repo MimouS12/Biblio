@@ -34,6 +34,7 @@ describe("test add book", () => {
        edition={mockBook.edition}
         nbExemplaires={mockBook.nbExemplaires}
         EAN={mockBook.EAN}
+        liste={liste}
         /></Router> )
     
   //  debug()
@@ -55,14 +56,13 @@ describe("test add book", () => {
     user.click(ModifierBookButton)
 
     //const  ArchiverBookButton = getByTestId("archiverBook")
-
     //user.click(ArchiverBookButton)
     //fireEvent.click(ArchiverBookButton)
 
     //(id,EAN, libelle,auteur,edition,nbExemplaires)
-    // mockupdateBook.mockResolvedValue()
-
-    //expect(mockupdateBook).toHaveBeenCalled()
+    //mockupdateBook.mockResolvedValue()
+    //var modifier =jest.fn()
+    //expect(modifier).toHaveBeenCalled()
 
      
   })

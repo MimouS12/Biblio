@@ -7,8 +7,8 @@ import "./listeretard.css"
 
 function Listeretard () {
 
-
-  var  empretard=fetchListeRetard()
+  let emprunts = JSON.parse(localStorage.getItem('emprunts'))
+  var  empretard=fetchListeRetard(emprunts)
 
  
  

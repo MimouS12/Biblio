@@ -7,7 +7,9 @@ import "./listeencours.css"
 
 function Listencours () {
 
-  var  empEncours=fetchListeEnCours()
+  let emprunts = JSON.parse(localStorage.getItem('emprunts'))
+  
+  var  empEncours=fetchListeEnCours(emprunts)
 
 
   return (

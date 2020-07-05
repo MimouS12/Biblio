@@ -13,7 +13,9 @@ import "./listeretourne.css"
 
 function Listeretournes() {
 
-  var  empretr=fetchListeRetourne()
+  let emprunts = JSON.parse(localStorage.getItem('emprunts'))
+
+  var  empretr=fetchListeRetourne(emprunts)
  
   return (
     

@@ -173,7 +173,6 @@
     }
 } else {
     throw new Error('le type est different de number !');
-
 }
 
   }
@@ -182,13 +181,14 @@
 
 
     if (typeof (EAN) === "number" && typeof (edition) === "number" && typeof (nbExemplaires) === "number"  ) {
-      if (nbExemplaires > 0 &&edition>0&&EAN>0) {
+      if (nbExemplaires > 0 && edition>0 && EAN>0) {
         
     books.push({ id: (books.length + 1).toString(), EAN : Number(EAN), libelle,auteur,edition : Number(edition),nbExemplaires: Number(nbExemplaires),etat:"actv" });
     console.log('book added successfully !!');
+
       }   else {
         throw new Error("le nombre est negatif !");
-    }
+      }
   } else {
       throw new Error('le type est different de number !');
   
