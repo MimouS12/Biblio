@@ -1,0 +1,14 @@
+.toggle{color: #007eff;
+    border: 1px solid #007eff;
+    background-color:white;
+    margin-right: 10px;  
+    padding: 6px; }
+.Titre1{color:DarkOrange}
+.page{
+    border: 1px solid black;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  
+}
+/* .page{background-image: url("../images/biblio2.jpg"); ;} */
+.P{background-color: #DEB887;}
