@@ -114,8 +114,10 @@ expect(mockdeleteBook).toHaveBeenCalled()
 
 afterEach(cleanup);
 
-test("make sure I can submit a todo", async () => {
+test("test integration formulaire add book with list book ", async () => {
   const mockdeleteBook = jest.fn()
+  const mockAjouter = jest.fn()
+
 localStorage.setItem("user","admin")
 //console.log("aaaaaaaaaaaa "+ localStorage.getItem("user"))
 const mockBooksWithOneBooks = [
@@ -128,24 +130,23 @@ const mockBooksWithOneBooks = [
   etat:"actv"
   },
 ]
-const isVisible=true
 
     const history = createMemoryHistory({ initialEntries: ["/"] })
     const {debug, getByPlaceholderText, getByTestId, getByText ,getByLabelText} = render(
-      <Router history={history}> <ListeActive  booksActive={mockBooksWithOneBooks} deleteBook={mockdeleteBook} >
-          {isVisible &&(<BookForm />)}
-      </ListeActive>    
+      <Router history={history}> <ListeActive  booksActive={mockBooksWithOneBooks} deleteBook={mockdeleteBook} AjouterLivre={mockAjouter} />
+  
       </Router>)
 
      expect(getByTestId("OnclickAjouter")).toBeTruthy()
      expect(getByText(/Ajouter livre/i)).toBeTruthy()
+     const submiAjoutVisibleButton = getByTestId("OnclickAjouter");
+     fireEvent.click(submiAjoutVisibleButton);
   const inputEAN = getByLabelText(/EAN-addbook/i)
   const inputlibelle= getByLabelText(/libelle-addbook/i)
   const inputauteur = getByLabelText(/auteur-addbook/i)
   const inputedition = getByLabelText(/edition-addbook/i)
   const inputNombreExemplaires= getByLabelText(/NombreExemplaires-addbook/i)
-  const submitButton = getByTestId("OnclickAjouter");
-  fireEvent.click(submitButton);
+
 
   //await waitForDomChange();
 
@@ -171,8 +172,8 @@ const isVisible=true
 await expect(getByTestId("submit-book")).toBeTruthy()
 await expect(getByText(/Ajouter un nouveau livre/i)).toBeTruthy()
  
-expect(mockaddBook).toHaveBeenCalled()
-expect(mockaddBook).toHaveBeenCalledTimes(1) 
+expect(mockAjouter).toHaveBeenCalled()
+expect(mockAjouter).toHaveBeenCalledTimes(1) 
 //debug()
 })
  })

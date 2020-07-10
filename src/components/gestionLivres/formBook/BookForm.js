@@ -1,8 +1,7 @@
 import React, { useState, useRef, memo} from "react"
 //import './FormAdd.css'
-import { addBook } from '../../../services/livres.service'
 
-function BookForm({maxExemplaireValue}) {
+function BookForm({AjouterLivre,maxExemplaireValue}) {
   //const [books, setbooks] = useState([])
   const [libelle, setlibelle] = useState("")
   const [auteur, setauteur] = useState("")
@@ -16,13 +15,13 @@ function BookForm({maxExemplaireValue}) {
   
   const inputlibelle = useRef(null)
   const handleAddBook = () => {
-      addBook(EAN, libelle,auteur,edition,nbExemplaires)
+    AjouterLivre(EAN, libelle,auteur,edition,nbExemplaires)
     inputlibelle.current.focus()
     setlibelle("")
     setauteur("")
-    setEAN(9782203135215)
-    setEdition(2000)
-    setNbExemplaires(3)
+    setEAN()
+    setEdition()
+    setNbExemplaires()
    
   } 
 

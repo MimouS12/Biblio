@@ -17,10 +17,11 @@ describe("test add book", () => {
      //debug()
   }) 
 
-
    test("devrait contenir: EAN, Libelle, auteur ,edition et nombre d'exemplaires et buttons", () => {
+    const mockAjouter = jest.fn()
+
     const { debug, getByLabelText, getByTestId, getByText } = render(
-      <BookForm  />
+      <BookForm AjouterLivre={mockAjouter}  />
     )
     const input = getByLabelText(/EAN-addbook/i)
      //debug(input)
@@ -52,9 +53,11 @@ describe("test add book", () => {
    }) 
 
   test("should fire events", async () => {
+    const mockAjouter = jest.fn()
+
     const promise=Promise.resolve()
     const { debug, getByLabelText, getByTestId } = render(
-      <BookForm />
+      <BookForm AjouterLivre={mockAjouter}/>
     )
     const input = getByLabelText(/EAN/i)
 
@@ -122,8 +125,8 @@ describe("test add book", () => {
     //user.click(submitButton)
     await act(() => promise)
     
-    expect(mockAddbook).toHaveBeenCalled()
-    expect(mockAddbook).toHaveBeenCalledTimes(1) 
+    expect(mockAjouter).toHaveBeenCalled()
+    expect(mockAjouter).toHaveBeenCalledTimes(1) 
     
       
 

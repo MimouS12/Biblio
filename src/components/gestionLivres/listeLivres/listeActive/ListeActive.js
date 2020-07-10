@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect  } from "react"
 // useCallback,
 import Livre from "../../livre/Livre"
 import "./listeActive.css"
 import BookForm from "../../formBook/BookForm"
 
-function ListeActive({booksActive,deleteBook}) {
+
+function ListeActive({booksActive,deleteBook,AjouterLivre}) {
 
   //const [activeBooks,  setActiveBooks] = useState([])
   const [isVisible, setIsVisible] = useState(false)
@@ -16,25 +17,8 @@ function ListeActive({booksActive,deleteBook}) {
     if(user ==="admin"){
         setModeAdmin(true)
     }}, [])
- 
-// useEffect(() => {
-//   const fetchData =  () => {
-//     //setLoading(true)
-//     const result = fetchbooksActive()
-//     setActiveBooks(result)
-//     //setLoading(false)
-//   }
-//   console.log("useEffect")
-
-//   fetchData()
-// }, [])
 
 
-
-  // const deleteActiveBook= id => {
-  //   const newbooks  = activeBooks.filter( book =>  book.id !== id)
-  //   setActiveBooks(newbooks)}
-     
 
  
 
@@ -53,8 +37,8 @@ function ListeActive({booksActive,deleteBook}) {
           <div>  <button className="Toggle" data-testid ="OnclickAjouter" onClick={toggleVisibility}>Ajouter livre</button>
             </div> 
            <div> {isVisible && (
-             <BookForm />
-           )}</div>
+                <BookForm AjouterLivre={AjouterLivre}/>
+             )}</div>
            </div>
         )} 
       <h1 className="Titre1">Liste des livres </h1>

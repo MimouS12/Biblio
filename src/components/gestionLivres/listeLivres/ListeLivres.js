@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect,useCallback } from "react"
 // useCallback,
 import ListeActive from "./listeActive/ListeActive"
 import ListeArchive from "./listeArchive/ListeArchive"
+import { addBook } from '../../../services/livres.service'
+
 import {fetchbooksActive ,fetchBooks } from '../../../services/livres.service'
 
 import "./ListeLivres.css"
@@ -52,7 +54,18 @@ function ListeLivres() {
   }, [searchValue])
   const deleteActiveBook= id => {
     const newbooks  = activeBooks.filter( book =>  book.id !== id)
-    setActiveBooks(newbooks)}
+    setActiveBooks(newbooks)
+  }
+  const AjouterLivre =(EAN, libelle,auteur,edition,nbExemplaires)=>{
+    addBook(parseInt(EAN), libelle,auteur,parseInt(edition),parseInt(nbExemplaires))
+
+    setActiveBooks(previousActiveBooks=> [...previousActiveBooks,{id:previousActiveBooks.length+1 ,EAN, libelle,auteur,edition,nbExemplaires}])
+
+  }
+  const memoizedCallbackAjoutBook = useCallback(AjouterLivre, [])
+
+  
+  
      
   
   
@@ -72,7 +85,7 @@ function ListeLivres() {
           />
         </div>
 
-        <ListeActive booksActive={activeBooks} deleteBook={deleteActiveBook} /> 
+        <ListeActive booksActive={activeBooks} deleteBook={deleteActiveBook} AjouterLivre={memoizedCallbackAjoutBook} /> 
         {modeAdmin &&(  
               <ListeArchive />              
         )}
