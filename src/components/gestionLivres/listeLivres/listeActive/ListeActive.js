@@ -5,9 +5,8 @@ import "./listeActive.css"
 import BookForm from "../../formBook/BookForm"
 
 
-function ListeActive({booksActive,deleteBook,AjouterLivre}) {
+function ListeActive({booksActive,deleteBook,AjouterLivre,MiseAjourLivre}) {
 
-  //const [activeBooks,  setActiveBooks] = useState([])
   const [isVisible, setIsVisible] = useState(false)
   const[modeAdmin,setModeAdmin]=useState(false)
  
@@ -74,6 +73,7 @@ function ListeActive({booksActive,deleteBook,AjouterLivre}) {
                      nbExemplaires ={book.nbExemplaires}
                      liste="active"
                     deleteBook={deleteBook}
+                    MiseAjourLivre={MiseAjourLivre}
                    
                 />
       })}

@@ -37,7 +37,8 @@ export default function Adherent({
     alert("you will activer this member")
    }
    const Modifier =()=>{
-    updateAdherent (id, FnameToUpdate, LnameToUpdate,cinToUpdate)
+     //id,cin,nom,prenom,dateNaissance,email
+    updateAdherent (id,cinToUpdate, FnameToUpdate, LnameToUpdate)
     setUpdateMode(false)
    }
   

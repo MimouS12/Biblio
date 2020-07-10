@@ -4,13 +4,13 @@ import { Link} from 'react-router-dom'
 import "./Livre.css"
 import { Alert } from 'antd';
 //import BookForm from "../../formBook/BookForm"
-import {archiveBook , setnbExemplaires ,updateBook} from "../../../services/livres.service"
+import {archiveBook , setnbExemplaires } from "../../../services/livres.service"
 import {Emprunter ,RetounerLivre} from "../../../services/emprunts.service"
 
 import './Livre.css';
 
 
-export default function Livre({ id, libelle, auteur ,EAN,edition ,nbExemplaires,liste,deleteBook}) {
+export default function Livre({ id, libelle, auteur ,EAN,edition ,nbExemplaires,liste,deleteBook,MiseAjourLivre}) {
   const[modeAdmin,setModeAdmin]=useState(false)
   const[modeMember,setModeMember]=useState(false)
   const[bookArchive, setBookArchive]=useState(false)
@@ -49,7 +49,7 @@ export default function Livre({ id, libelle, auteur ,EAN,edition ,nbExemplaires,
 
   },[id])
    const Modifier =()=>{
-     updateBook(id, EANToUpdate,libelleToUpdate, auteurToUpdate,editionToUpdate,nbExemplairesToUpdate)
+    MiseAjourLivre(id, EANToUpdate,libelleToUpdate, auteurToUpdate,editionToUpdate,nbExemplairesToUpdate)
     setUpdateMode(false)
    }
   const Archiver =()=>{
@@ -176,12 +176,14 @@ export default function Livre({ id, libelle, auteur ,EAN,edition ,nbExemplaires,
           name=" EAN"
           value={EANToUpdate}
           onChange={e => setEANToUpdate(e.target.value)}
+          required
         />
         <input
           type="text"
           name=" libelle"
           value={libelleToUpdate}
           onChange={e => setlibelleToUpdate(e.target.value)}
+
         />
         <input
           type="text"
