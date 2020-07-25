@@ -179,7 +179,7 @@
 
 
     if (typeof (EAN) === "number" && typeof (edition) === "number" && typeof (nbExemplaires) === "number"  ) {
-      if (nbExemplaires > 0 && edition>0 && EAN>0) {
+      if (nbExemplaires >= 0 && edition>=0 && EAN>=0) {
         
     books.push({ id: (books.length + 1).toString(), EAN : Number(EAN), libelle,auteur,edition : Number(edition),nbExemplaires: Number(nbExemplaires),etat:"actv" });
     console.log('book added successfully !!');
@@ -196,18 +196,16 @@
    }
   export const updateBook = function (id,EAN, libelle,auteur,edition,nbExemplaires) {
     if (typeof (EAN) === "number" && typeof (edition) === "number" && typeof (nbExemplaires) === "number"  ) {
-      if (nbExemplaires > 0 &&edition>0&&EAN>0) {
+      if (nbExemplaires > 0 && edition >0 && EAN >0) {
         
         books.forEach((book) => {
-          if (book.id=== id) {
+          if (book.id === id) {
             book.EAN=EAN
             book.libelle=libelle
             book.auteur=auteur
             book.edition=edition
             book.nbExemplaires=nbExemplaires
-        }
-      
-      })
+        } })
       }   else {
         throw new Error("le nombre est negatif !");
     }

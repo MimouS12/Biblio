@@ -1,5 +1,5 @@
 import React, { useState, useRef, memo} from "react"
-//import './FormAdd.css'
+import './BookForm.css'
 
 function BookForm({AjouterLivre,maxExemplaireValue}) {
   //const [books, setbooks] = useState([])
@@ -28,15 +28,22 @@ function BookForm({AjouterLivre,maxExemplaireValue}) {
  
   return (
     <div className="book-form">
-      EAN
+      <div className="inputAjoutBook">
+      
+      <div className="labelinputBook"> EAN</div>  
+
         <input
         aria-label="EAN-addbook"
         type="number"
         name="EAN"
         value={EAN}
-        onChange= {e => setEAN(e.target.value)}
+        onChange= {e => setEAN(Number(e.target.value))}
       />
-      Libelle du livre 
+      </div>
+<div className="inputAjoutBook">
+ 
+<div className="labelinputBook"> Libelle</div>  
+
       <input
       aria-label="libelle-addbook"
         type="text"
@@ -45,7 +52,9 @@ function BookForm({AjouterLivre,maxExemplaireValue}) {
         ref={inputlibelle}
         onChange= {e => setlibelle(e.target.value)}
       />
-      Auteur 
+</div>
+<div className="inputAjoutBook">
+   <div className="labelinputBook"> Auteur</div>  
       <input
       aria-label="auteur-addbook"
         type="text"
@@ -53,27 +62,35 @@ function BookForm({AjouterLivre,maxExemplaireValue}) {
         name="auteur"
         onChange={e => setauteur(e.target.value)}
       />
-      Edition
+</div>
+<div className="inputAjoutBook">
+   <div className="labelinputBook"> Edition</div>  
+
       <input
       aria-label="edition-addbook"
         type="number"
         name="edition"
         value={edition}
-        onChange= {e => setEdition(e.target.value)}
+        onChange= {e => setEdition(Number(e.target.value))}
         required
       />
-      Nombre d'exemplaires 
+</div>
+<div className="inputAjoutBook">     <div className="labelinputBook">  Nombre d'exemplaires </div>  
+
       <input
      aria-label="NombreExemplaires-addbook"
         type="number"
         name="NombreExemplaires"
         value={nbExemplaires}
         onChange= {e => setNbExemplaires(Number(e.target.value))}
-      />
-      <button data-testid="submit-book" className="button" onClick={handleAddBook}>
-        Ajouter un nouveau livre
+      /></div>
+    
+  
+      <button data-testid="submit-book" className="buttonAjoutLivre" onClick={handleAddBook}>
+       <b>Ajouter</b>  
       </button>
-      {nbExemplaires> maxExemplaireValue && (
+
+      {nbExemplaires > maxExemplaireValue && (
         <div data-testid="error-NombreExemplaires" className="error">
           The number of exemplaire must be less than {maxExemplaireValue}
         </div>

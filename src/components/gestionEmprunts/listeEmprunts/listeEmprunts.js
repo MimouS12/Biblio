@@ -14,7 +14,7 @@ function ListeEmprunts() {
     
     <div className='P3'>
        <div className="homepage"></div>
-       <div className="page">
+       <div className="emprunts-list">
          <Listencours /> 
           <Listeretournes/>              
           <Listeretard/>   

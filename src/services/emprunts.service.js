@@ -135,3 +135,8 @@ export const fetchListeRetourne =(emprunts)=>{
   var  listeRetourne=emprunts.filter(emprunt => emprunt.etat==="retourné"|| emprunt.etat==="RetournerRetard")
   return  listeRetourne
 }
+export const fetchEmpruntBymember =(emprunts,id)=>{
+  
+  var Empadh= emprunts.filter(item => item["idUser"]===id );
+  return  Empadh
+}

@@ -15,6 +15,7 @@ function ListeArchive({booksArchived,deleteBook,MiseAjourLivre}) {
   return (
     
     <div className="adherents-list" >
+      <br/>
       <h1 className="Titre1">Liste des livres archivées</h1>
       <div> <table  className="entete-tab">
         <tbody>

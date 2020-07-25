@@ -1,52 +1,11 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 // useCallback,
-import {fetchadherentsActive,fetchadherents } from '../../../../services/adherents.service'
-//import {updateAdherent   } from '../../../../services/adherents.service'
-
 import Adherent from "../../adherent/Adherent"
 import "./listeactive.css"
-function ListeActive() {
-  const [activeadherents, setActiveAdherents] = useState([])
-  const [searchValue, setSearchValue] = useState("")
+function ListeActive({activeadherents,deleteMember,ModifierMember,BannirMember}) {
 
 
 
-   useEffect(() => {
-     const fetchData =  () => {
-       const result =  fetchadherentsActive()
-       setActiveAdherents(result)
-     }
-     console.log("useEffect")
-
-     fetchData()
-   }, [])
-     
-   useEffect(() => {
-    let didCancel = false
-    const fetchData = async () => {
-        const result = await fetchadherents(searchValue)
-        console.log("result: ", didCancel)
-        if (!didCancel) {
-          setActiveAdherents(result)
-        }
-
-      
-    }
-    // console.log("useEffect:", searchValue)
-    fetchData()
-
-    return () => {
-      console.log("cleanup: ", searchValue)
-      didCancel = true
-    }
-
-  }, [searchValue])
-
-
-  const deleteMember= id => {
-    const newadherents  = activeadherents.filter( adherent=>   adherent.id !== id)
-    setActiveAdherents(newadherents)
-  }
 
   
   
@@ -56,15 +15,6 @@ function ListeActive() {
 
       <h1  className="Titre">Liste des Adhérents Actifs</h1>
 
-      <div className="search">
-          <input
-            type="search"
-            name="search"
-            placeholder=" nom/ prénom"
-            value={searchValue}
-            onChange={e => setSearchValue(e.target.value)}
-          />
-        </div>
         <br/>
         
         {activeadherents.length!==0 ?(
@@ -93,9 +43,17 @@ function ListeActive() {
     
         {activeadherents.map(adherent => {
           return <Adherent
-          key={adherent.id} id={adherent.id} cin={adherent.cin} nom={adherent.nom} prenom={adherent.prenom} dateNaissance={adherent.dateNaissance} 
-            liste="active"
-            deleteMember={deleteMember}
+          key={adherent.id} 
+          id={adherent.id} 
+          cin={adherent.cin} 
+          nom={adherent.nom} 
+          prenom={adherent.prenom} 
+          dateNaissance={adherent.dateNaissance} 
+          email={adherent.email}
+          liste="active"
+          deleteMember={deleteMember}
+          ModifierMember={ModifierMember}
+          BannirMember={BannirMember}
             />
           })}
                    

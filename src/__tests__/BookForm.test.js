@@ -48,7 +48,6 @@ describe("test add book", () => {
     expect(inputNombreExemplaires ).toHaveAttribute("type", "number")
     
     expect(getByTestId("submit-book")).toBeTruthy()
-      expect(getByText(/Ajouter un nouveau livre/i)).toBeTruthy()
 
    }) 
 

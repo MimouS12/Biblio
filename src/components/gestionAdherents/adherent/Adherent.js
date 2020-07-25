@@ -1,44 +1,46 @@
 import React ,{useState} from "react"
 //, { useState } 
 import PropTypes from "prop-types"
-//import { Table, Space } from 'antd';
+import {
+  DeleteOutlined,EditOutlined,CheckOutlined,CloseOutlined,UserOutlined
+} from '@ant-design/icons';
 import { Link } from 'react-router-dom'
 import { Alert } from 'antd';
-import {bannirAdherent ,activerAdherent,  updateAdherent} from "../../../services/adherents.service"
-//import {updateAdherent   } from '../../../../services/adherents.service'
 import './Adherent.css';
 
 ;
 
 export default function Adherent({
  id,
+ cin,
   nom,
   prenom,
-  cin,
+  dateNaissance,
+  email,
   liste,
- // updateAdherent ,
-  deleteMember
-
+  deleteMember,
+  ModifierMember,
+  BannirMember,
+  ActiverMember
 }) {
   const[ Adherentactive, setactiverAdherent]=useState(false)
   const[ Adherentbanni, setbannirAdherent]=useState(false)
   const [updateMode, setUpdateMode] = useState(false)
   const [FnameToUpdate, setFnameToUpdate] = useState(nom)
   const [LnameToUpdate, setLnameToUpdate] = useState(prenom)
+  const [DateNToUpdate, setdateNToUpdate] = useState(dateNaissance)
+  const [EmailToUpdate, setemailToUpdate] = useState(email)
   const [cinToUpdate, setcinToUpdate] = useState(cin)
   const Bannir =()=>{
-    bannirAdherent(id)
+    BannirMember(id)
     setbannirAdherent(true)
-    alert("you will bannir this member")
    }
    const Activer =()=>{
-    activerAdherent(id)
+    ActiverMember(id)
     setactiverAdherent(true)
-    alert("you will activer this member")
    }
    const Modifier =()=>{
-     //id,cin,nom,prenom,dateNaissance,email
-    updateAdherent (id,cinToUpdate, FnameToUpdate, LnameToUpdate)
+    ModifierMember (id,cinToUpdate, FnameToUpdate, LnameToUpdate,DateNToUpdate,EmailToUpdate)
     setUpdateMode(false)
    }
   
@@ -76,41 +78,37 @@ export default function Adherent({
           <td></td>
  
            <td>{cin}</td>
-  
-           {/* bech yet5dmou modifier w bannir 
-           modifier test7a9 formulaire wala popup w bannir fl service w n3aytoulha wakahaw 
-           **bannir just bech tbaddel el statu ta3 l'adherent
-           onClick={fnctModifier}
-           onClick={fnctBannir} */}
+
            
            <td className="ButtonSection">
-           <button className="button" style={{background:"LightSteelBlue"}}onClick={()=>setUpdateMode(true)}>
-              Modifier
+           <button data-testid="UpdateAdh" className="button" style={{background:"LightSteelBlue"}}onClick={()=>setUpdateMode(true)}>
+           <EditOutlined style={{ fontSize: '18px' }} />
             </button>
              
    
-           <button className="button" style={{background:"Plum"}}onClick={() => deleteMember(id)}>
-             Supprimer
+           <button data-testid="deleteAdh" className="button" style={{background:"Plum"}}onClick={() => deleteMember(id)}>
+           <DeleteOutlined style={{ fontSize: '18px' }}/>
+
             </button>
              
            
         
               {liste ==="active" &&(
                                        
-                                       <button className="button" style={{background:"pink"}} onClick={Bannir}>
-                                           Bannir
+                                       <button  data-testid="BannirAdh" className="button" style={{background:"darksalmon"}} onClick={Bannir}>
+                                          <CloseOutlined style={{ fontSize: '18px' }}  /><b>Bannir</b>  
                                        </button>
                                    
              ) }
                    {liste ==="Banni" &&(
                                      
-                                       <button className="button" style={{background:"pink"}} onClick={Activer}>
-                                          Activer
+                                       <button data-testid="ActiveAdh" className="button" style={{background:"lightgreen"}} onClick={Activer}>
+                                         <CheckOutlined style={{ fontSize: '18px' }} />  <b>Activer</b> 
                                        </button>
                                 
   
              ) } 
-           <Link to={`/adminPage/ListeAdherents/${id}`}>  Voir profil</Link> 
+           <Link to={`/adminPage/ListeAdherents/${id}`}>  <UserOutlined style={{ fontSize: '26px' }} /></Link> 
            </td>
            
            </tr>
@@ -133,12 +131,26 @@ export default function Adherent({
             onChange={e => setLnameToUpdate(e.target.value)}
           />
           <input
-            type="text"
+            type="number"
             value={cinToUpdate}
             name="cin"
             onChange={e => setcinToUpdate(e.target.value)}
           />
-          <button className="button" style={{background:"grey"}}onClick={Modifier}>
+                     <input
+            type="date"
+            value={DateNToUpdate}
+            name="email"
+            onChange={e => setdateNToUpdate(e.target.value)}
+          />
+          <input
+            type="text"
+            value={EmailToUpdate}
+            name="email"
+            onChange={e => setemailToUpdate(e.target.value)}
+          />
+
+
+          <button data-testid="ModifierAdherent" className="button" style={{background:"grey"}}onClick={Modifier}>
               Modifier adhérent
             </button>
         </div>

@@ -1,40 +1,10 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 // useCallback,
-
-import {fetchadherentsBanni } from '../../../../services/adherents.service'
 import Adherent from "../../adherent/Adherent"
 import "./listebanni.css"
-function ListeBanni() {
-  const [banniAdherents, setBanniAdherents] = useState([])
-  //const [loading, setLoading] = useState(false)
- //const [searchValue, setSearchValue] = useState("")
-
- // const [isVisible, setIsVisible] = useState(true)
-
-   useEffect(() => {
-     const fetchData =  () => {
-       //setLoading(true)
-       const result =  fetchadherentsBanni()
-       setBanniAdherents(result)
-       //setLoading(false)
-     }
-     console.log("useEffect")
-
-     fetchData()
-   }, [])
+function ListeBanni({banniAdherents,deleteMember ,ModifierMember, ActiverMember}) {
 
 
-
-   const updateAdherent = (id, nom, prenom,cin) => {
-    const newadherents = banniAdherents.map( adherent =>
-      adherent.id === id ? {nom, prenom,cin } : adherent
-    )
-    setBanniAdherents(newadherents)
-  }
-  const deleteMember= id => {
-    const newadherents  = banniAdherents.filter( adherent=>   adherent.id !== id)
-    setBanniAdherents(newadherents)
-  }
   
   return (
     
@@ -68,8 +38,9 @@ function ListeBanni() {
             prenom={adherent.prenom}
             dateNaissance={adherent.dateNaissance} 
             liste="Banni"
-            updateAdherent={updateAdherent}
             deleteMember={deleteMember}
+            ModifierMember={ModifierMember}
+            ActiverMember={ActiverMember}
      />
         
       })}

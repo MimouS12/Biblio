@@ -4,7 +4,7 @@ import ListeActive from "./listeActive/ListeActive"
 import ListeArchive from "./listeArchive/ListeArchive"
 import { addBook } from '../../../services/livres.service'
 
-import {fetchbooksActive,fetchbooksArchive ,fetchBooks ,updateBook} from '../../../services/livres.service'
+import {fetchbooksActive,fetchbooksArchive ,fetchBooks ,updateBook, archiveBook} from '../../../services/livres.service'
 
 
 import "./ListeLivres.css"
@@ -77,23 +77,26 @@ function ListeLivres() {
     setActiveBooks(newbooks)
   }
   const AjouterLivre =(EAN, libelle,auteur,edition,nbExemplaires)=>{
-    addBook(parseInt(EAN), libelle,auteur,parseInt(edition),parseInt(nbExemplaires))
 
-    setActiveBooks(previousActiveBooks=> [...previousActiveBooks,{id:previousActiveBooks.length+1 ,EAN, libelle,auteur,edition,nbExemplaires}])
+    addBook(parseInt(EAN), libelle,auteur,parseInt(edition),parseInt(nbExemplaires))
+    setActiveBooks(previousActiveBooks=> [...previousActiveBooks,{id:previousActiveBooks.length+3,EAN, libelle,auteur,edition,nbExemplaires}])
 
   }
   const memoizedCallbackAjoutBook = useCallback(AjouterLivre, [])
 
   const MiseAjourLivre =(id,EAN, libelle,auteur,edition,nbExemplaires)=>{
     updateBook(id,parseInt(EAN), libelle,auteur,parseInt(edition),parseInt(nbExemplaires))
-    const newActiveBooks = activeBooks.map(book =>(book.id ).toString() ===id ? ({EAN, libelle,auteur,edition,nbExemplaires}):book)
+    const newActiveBooks = activeBooks.map(book =>book.id===id ? ({id,EAN, libelle,auteur,edition,nbExemplaires}):book)
     setActiveBooks(newActiveBooks)
   }
-  
-  
-     
-  
-  
+  const ArchiverLivre =(id)=>{
+    archiveBook(id)
+    const newActiveBooks = activeBooks.filter(book =>book.etat==="actv")
+    setActiveBooks(newActiveBooks)
+    const newArchivedBooks =  fetchbooksArchive()
+    setArchivedBooks(newArchivedBooks)
+  }
+
   return (
  
     <div className='P'>
@@ -110,9 +113,10 @@ function ListeLivres() {
           />
         </div>
 
-        <ListeActive booksActive={activeBooks} deleteBook={deleteActiveBook} AjouterLivre={memoizedCallbackAjoutBook} MiseAjourLivre={MiseAjourLivre} /> 
+        <ListeActive booksActive={activeBooks} deleteBook={deleteActiveBook} AjouterLivre={memoizedCallbackAjoutBook} MiseAjourLivre={MiseAjourLivre} ArchiverLivre={ArchiverLivre} /> 
+        
         {modeAdmin &&(  
-              <ListeArchive booksArchived={archivedBooks} deleteBook={deleteActiveBook}  MiseAjourLivre={MiseAjourLivre}/>              
+          <ListeArchive booksArchived={archivedBooks} deleteBook={deleteActiveBook}  MiseAjourLivre={MiseAjourLivre}/>              
         )}
         </div>
 

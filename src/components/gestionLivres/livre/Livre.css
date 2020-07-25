@@ -3,3 +3,9 @@
 .link{ padding-left: 10px;
 
 }
+a{
+    color: black;
+}
+a:hover {
+    color: black;
+ }

@@ -3,9 +3,12 @@ import React, { useState, useEffect  } from "react"
 import Livre from "../../livre/Livre"
 import "./listeActive.css"
 import BookForm from "../../formBook/BookForm"
+import {
+  PlusOutlined
+} from '@ant-design/icons';
 
 
-function ListeActive({booksActive,deleteBook,AjouterLivre,MiseAjourLivre}) {
+function ListeActive({booksActive,deleteBook,AjouterLivre,MiseAjourLivre,ArchiverLivre}) {
 
   const [isVisible, setIsVisible] = useState(false)
   const[modeAdmin,setModeAdmin]=useState(false)
@@ -33,8 +36,8 @@ function ListeActive({booksActive,deleteBook,AjouterLivre,MiseAjourLivre}) {
   
        {modeAdmin &&( 
             <div>
-          <div>  <button className="Toggle" data-testid ="OnclickAjouter" onClick={toggleVisibility}>Ajouter livre</button>
-            </div> 
+          <div> <br/> <button className="Toggle" data-testid ="OnclickAjouter" onClick={toggleVisibility}> <PlusOutlined /> <b>Ajouter livre</b></button>
+            </div> <br/>
            <div> {isVisible && (
                 <BookForm AjouterLivre={AjouterLivre}/>
              )}</div>
@@ -74,6 +77,7 @@ function ListeActive({booksActive,deleteBook,AjouterLivre,MiseAjourLivre}) {
                      liste="active"
                     deleteBook={deleteBook}
                     MiseAjourLivre={MiseAjourLivre}
+                    ArchiverLivre={ArchiverLivre}
                    
                 />
       })}

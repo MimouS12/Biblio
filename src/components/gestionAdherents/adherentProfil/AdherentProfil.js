@@ -25,7 +25,9 @@ function AdherentProfil() {
 
   return (
     <div className="adherent-details">
-      <div className="header">Adherent Profil</div>  
+              <div className="homepage"></div>
+
+      <h2 className="header">Adherent Profil</h2>  
       {loading ? (
         <div>Loading ... </div>
       ) : (
@@ -44,6 +46,7 @@ function AdherentProfil() {
           <div className="title">Email</div>
           <div className="value">{adherent.email}</div>
           <ListeEmpruntAdh/>
+          <br/>
         </>
         
       )}

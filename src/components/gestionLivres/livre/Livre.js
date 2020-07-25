@@ -3,27 +3,29 @@ import PropTypes from "prop-types"
 import { Link} from 'react-router-dom'
 import "./Livre.css"
 import { Alert } from 'antd';
+import {
+  DeleteOutlined,EditOutlined,ScissorOutlined,FileSearchOutlined,PlusOutlined,MinusOutlined
+} from '@ant-design/icons';
 //import BookForm from "../../formBook/BookForm"
-import {archiveBook , setnbExemplaires } from "../../../services/livres.service"
+import {setnbExemplaires } from "../../../services/livres.service"
 import {Emprunter ,RetounerLivre} from "../../../services/emprunts.service"
 
 import './Livre.css';
 
 
-export default function Livre({ id, libelle, auteur ,EAN,edition ,nbExemplaires,liste,deleteBook,MiseAjourLivre}) {
+export default function Livre({ id, libelle, auteur ,EAN,edition ,nbExemplaires,liste,deleteBook,MiseAjourLivre, ArchiverLivre}) {
   const[modeAdmin,setModeAdmin]=useState(false)
   const[modeMember,setModeMember]=useState(false)
   const[bookArchive, setBookArchive]=useState(false)
   const[bookBorrowed, setBookBorrowed]=useState(false)
-  //const[book,setBook]=useState({})
 
+  const [updateMode, setUpdateMode] = useState(false)
   const [libelleToUpdate, setlibelleToUpdate] = useState(libelle)
   const [auteurToUpdate, setauteurToUpdate] = useState( auteur)
   const [EANToUpdate, setEANToUpdate] = useState(EAN)
-  const [editionToUpdate, seteditionToUpdate] = useState( edition)
+  const [editionToUpdate, seteditionToUpdate] = useState(edition)
   const [nbExemplairesToUpdate, setnbExemplairesToUpdate] = useState(nbExemplaires)
 
-  const [updateMode, setUpdateMode] = useState(false)
  
   useEffect(()=>{
     var user = localStorage.getItem('user')
@@ -49,13 +51,14 @@ export default function Livre({ id, libelle, auteur ,EAN,edition ,nbExemplaires,
 
   },[id])
    const Modifier =()=>{
-    MiseAjourLivre(id, EANToUpdate,libelleToUpdate, auteurToUpdate,editionToUpdate,nbExemplairesToUpdate)
+    MiseAjourLivre(id,EANToUpdate,libelleToUpdate, auteurToUpdate,editionToUpdate,nbExemplairesToUpdate)
     setUpdateMode(false)
    }
   const Archiver =()=>{
-   archiveBook(id)
-   setBookArchive(true)
-   alert("you will archive this book")
+    setBookArchive(true)
+    alert("you will archive this book")
+    ArchiverLivre(id)
+
   }
   const Emprunterlivre =()=>{
    var resltEmprunter= Emprunter(id ,libelle,nbExemplaires)
@@ -106,11 +109,11 @@ export default function Livre({ id, libelle, auteur ,EAN,edition ,nbExemplaires,
              <>
                   <div>   
               
-              <button data-testid='updateBook' className="button" style={{background:"limegreen"}} onClick={()=>setUpdateMode(true)}>
-                 Modifier
+              <button data-testid='updateBook' className="button" style={{background:"lightsteelblue"}} onClick={()=>setUpdateMode(true)}>
+              <EditOutlined style={{ fontSize: '18px' }} />
                </button>
-               <button data-testid="deleteBook" className="button" style={{background:"Gold"}} onClick={() => deleteBook(id)}>
-                       Supprimer
+               <button data-testid="deleteBook" className="button" style={{background:"indianred"}} onClick={() => deleteBook(id)}>
+               <DeleteOutlined style={{ fontSize: '18px' }}/>
                       </button> 
              
                </div>
@@ -121,15 +124,15 @@ export default function Livre({ id, libelle, auteur ,EAN,edition ,nbExemplaires,
 
            {liste ==="active" &&(
                                     
-                                     <button data-testid="archiverBook" className="button" style={{background:"orange"}} onClick={Archiver}>
-                                          Archiver
+                                     <button data-testid="archiverBook" className="button" style={{background:"sandybrown"}} onClick={Archiver}>
+                                         <ScissorOutlined style={{ fontSize: '18px' }} /> <b>Archiver</b>
                                      </button>
                                 
                                     ) }
                             </div>
                      
                           <div className='link'>    
-                          <Link to={`/adminPage/listelivres/${id}`}> Détails</Link>
+                          <Link to={`/adminPage/listelivres/${id}`}> <FileSearchOutlined style={{ fontSize: '25px' }} /></Link>
                           </div> 
              </>
              
@@ -141,22 +144,22 @@ export default function Livre({ id, libelle, auteur ,EAN,edition ,nbExemplaires,
 
              {bookBorrowed &&(
               <div>
-                     <button data-testid ="Retourner"className="button" style={{background:"yellow"}} onClick={Retourner}>
-                       Retourner
+                     <button data-testid ="Retourner"className="button" style={{background:"darkkhaki"}} onClick={Retourner}>
+                     <MinusOutlined style={{ fontSize: '20px' }} /> <b>Retourner</b>
                      </button>
                      </div>
 
              )}
              {!bookBorrowed &&(
                <div>
-               <button data-testid ="Emprunter" className="button" style={{background:"Goldenrod"}} onClick={Emprunterlivre}>
-                  Emprunter
+                <button data-testid ="Emprunter"  style={{background:"khaki"}} onClick={Emprunterlivre}>
+                <PlusOutlined style={{ fontSize: '20px' }}/><b>Emprunter</b>
                 </button>
-</div>
+                </div>
              )}
            
              <div> 
-             <Link to={`/memberPage/listelivres/${id}`}> Détails</Link>
+             <Link to={`/memberPage/listelivres/${id}`} className="linkColor"><FileSearchOutlined style={{ fontSize: '30px' }} /></Link>
              </div>  
            
          </>
@@ -194,7 +197,8 @@ export default function Livre({ id, libelle, auteur ,EAN,edition ,nbExemplaires,
         <input
           type="number"
           value={editionToUpdate}
-          name="edition"
+          name="edition"           required="required"
+
           onChange={e => seteditionToUpdate(e.target.value)}
         />
         <input
@@ -203,7 +207,7 @@ export default function Livre({ id, libelle, auteur ,EAN,edition ,nbExemplaires,
           name="nbExemplaires"
           onChange={e => setnbExemplairesToUpdate(e.target.value)}
         />
-        <button className="button" style={{background:"grey"}} onClick={Modifier}>
+        <button data-testid='ModifierLivre' className="button" style={{background:"grey"}} onClick={Modifier}>
             Modifier Livre
           </button>
       </div>

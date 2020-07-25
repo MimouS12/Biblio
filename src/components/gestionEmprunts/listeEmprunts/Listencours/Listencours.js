@@ -22,9 +22,14 @@ function Listencours () {
       <div> <table className="entete-tab">
         <tbody>
       <tr>
-        <th>Libellé  </th>
-  
-        <th>Adhérent </th>
+        <th>Libelle </th>
+        <th></th>        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+
+        <th>Adherent </th>
         <th>date emprunt</th>
         </tr>
         </tbody>

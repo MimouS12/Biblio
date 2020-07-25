@@ -85,7 +85,7 @@ const adherents = [
     })
     console.log('Adherent is banni !!!');
       } 
-      export const activerAdherent = function (id) {
+  export const activerAdherent = function (id) {
         adherents.forEach((adh) => {
           if (adh.id=== id) {
            adh.etat="active"
